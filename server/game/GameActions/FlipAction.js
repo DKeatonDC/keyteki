@@ -19,6 +19,9 @@ class FlipAction extends CardGameAction {
         return super.createEvent('onFlipToken', { card, player: context.player, context }, () => {
             if (card.isToken() && card.printedType !== 'creature') {
                 context.game.actions
+                    .removeAllTokens({
+                        target: card
+                    })
                     .discard({
                         target: card
                     })
